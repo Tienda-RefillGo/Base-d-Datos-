@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div style="max-width: 1200px; margin: 0 auto; padding: 6rem 2rem; background: var(--paper); min-height: 70vh; font-family: sans-serif;">
+    
+    <div style="border-bottom: 1px solid var(--cream); padding-bottom: 2.5rem; margin-bottom: 3.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+        
+        <div style="display: flex; align-items: center; gap: 2rem;">
+            <div style="position: relative; width: 100px; height: 100px; border-radius: 50%; overflow: hidden; border: 1px solid var(--cream); background: #ffffff;">
+                <img src="/static/img/{{ foto }}" alt="Foto de perfil" style="width: 100%; height: 100%; object-fit: cover;">
+                
+                <form action="/actualizar_foto" method="POST" enctype="multipart/form-data" id="form-foto" style="margin: 0;">
+                    <label for="input-foto" style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.6); color: #ffffff; font-family: sans-serif; font-size: 10px; text-align: center; padding: 0.3rem 0; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px;">
+                        Cambiar
+                    </label>
+                    <input type="file" id="input-foto" name="foto_perfil" accept="image/*" onchange="document.getElementById('form-foto').submit();" style="display: none;">
+                </form>
+            </div>
+
+            <div>
+                <span class="mono" style="font-size: 10px; color: var(--warm-mid); text-transform: uppercase; letter-spacing: 1px; font-weight: bold;">PANEL PRIVADO</span>
+                <h1 class="syne" style="font-size: 2.8rem; color: var(--ink); margin: 0.2rem 0 0 0; font-weight: 700; letter-spacing: -1px;">Hola, {{ nombre }}</h1>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 1rem;">
+            <a href="{{ url_for('index') }}" class="mono" style="background: white; color: var(--ink); border: 1px solid var(--cream); text-decoration: none; padding: 0.6rem 1.5rem; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;">
+                Catálogo
+            </a>
+            <a href="{{ url_for('logout') }}" class="mono" style="background: #b71c1c; color: white; text-decoration: none; padding: 0.6rem 1.5rem; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;">
+                Salir
+            </a>
+        </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
+        
+        <div style="background: white; border: 1px solid var(--cream); padding: 2.5rem; display: flex; flex-direction: column; gap: 1rem;">
+            <span class="mono" style="font-size: 10px; color: #2e7d32; text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px;">Estado</span>
+            <h3 class="syne" style="font-size: 20px; margin: 0; font-weight: 700; color: var(--ink);">Suscripción Activa</h3>
+            <p style="font-family: 'Cormorant Garamond', serif; font-size: 15px; color: #555555; margin: 0; line-height: 1.5;">
+                Tu cuenta se encuentra registrada correctamente en la modalidad de consumo circular. Ya puedes asistir a cualquier Smart Dispenser local con tus envases.
+            </p>
+        </div>
+
+        <div style="background: white; border: 1px solid var(--cream); padding: 2.5rem; display: flex; flex-direction: column; gap: 1rem;">
+            <span class="mono" style="font-size: 10px; color: var(--warm-mid); text-transform: uppercase; letter-spacing: 0.5px;">Métricas</span>
+            <h3 class="syne" style="font-size: 20px; margin: 0; font-weight: 700; color: var(--ink);">Historial de Recarga</h3>
+            <p class="mono" style="font-size: 12px; color: #666666; margin: 0;">No se registran transacciones previas en las últimas 24 horas.</p>
+            <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--cream); display: flex; justify-content: space-between; align-items: center;">
+                <span class="mono" style="font-size: 11px;">Litros Recargados:</span>
+                <strong class="syne" style="color: #2e7d32;">0.0 L</strong>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

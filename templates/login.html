@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div style="max-width: 450px; margin: 6rem auto; padding: 3rem 2rem; background: #ffffff; border: 1px solid var(--cream); border-radius: 4px; font-family: sans-serif;">
+    
+    <div style="display: flex; justify-content: space-around; margin-bottom: 2.5rem; border-bottom: 1px solid var(--cream); padding-bottom: 1rem;" class="mono">
+        <span id="tab-login" onclick="cambiarPestaña('login')" style="font-size: 14px; color: var(--ink); font-weight: bold; cursor: pointer; text-transform: uppercase; border-bottom: 2px solid var(--ink); padding-bottom: 0.5rem;">Ingresar</span>
+        <span id="tab-registro" onclick="cambiarPestaña('registro')" style="font-size: 14px; color: #999999; font-weight: normal; cursor: pointer; text-transform: uppercase; padding-bottom: 0.5rem;">Registrarse</span>
+    </div>
+
+    <div id="form-login-container" style="display: block;">
+        <form action="/login_usuario" method="POST" style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+                <label class="mono" style="font-size: 11px; color: var(--ink); text-transform: uppercase;">Correo Electrónico</label>
+                <input type="email" name="correo" required style="width: 100%; padding: 0.8rem; border: 1px solid var(--cream); font-size: 14px; outline: none; background: var(--paper);">
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+                <label class="mono" style="font-size: 11px; color: var(--ink); text-transform: uppercase;">Contraseña</label>
+                <input type="password" name="password" required style="width: 100%; padding: 0.8rem; border: 1px solid var(--cream); font-size: 14px; outline: none; background: var(--paper);">
+            </div>
+            <button type="submit" class="mono" style="background: var(--ink); color: #ffffff; border: none; padding: 1rem; font-size: 0.85rem; font-weight: bold; letter-spacing: 0.5px; cursor: pointer; text-transform: uppercase; margin-top: 0.5rem;">
+                Entrar al Sistema
+            </button>
+        </form>
+    </div>
+
+    <div id="form-registro-container" style="display: none;">
+        <form action="/registro_cliente" method="POST" style="display: flex; flex-direction: column; gap: 1.2rem;">
+            <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+                <label class="mono" style="font-size: 11px; color: var(--ink); text-transform: uppercase;">Nombre Completo</label>
+                <input type="text" name="nombre" required style="width: 100%; padding: 0.8rem; border: 1px solid var(--cream); font-size: 14px; outline: none; background: var(--paper);">
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+                <label class="mono" style="font-size: 11px; color: var(--ink); text-transform: uppercase;">Correo Electrónico</label>
+                <input type="email" name="correo" required style="width: 100%; padding: 0.8rem; border: 1px solid var(--cream); font-size: 14px; outline: none; background: var(--paper);">
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+                <label class="mono" style="font-size: 11px; color: var(--ink); text-transform: uppercase;">Contraseña</label>
+                <input type="password" name="password" required style="width: 100%; padding: 0.8rem; border: 1px solid var(--cream); font-size: 14px; outline: none; background: var(--paper);">
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+                <label class="mono" style="font-size: 11px; color: var(--ink); text-transform: uppercase;">Tipo de Cuenta</label>
+                <select name="tipo_cliente" style="width: 100%; padding: 0.8rem; border: 1px solid var(--cream); font-size: 14px; outline: none; background: var(--paper);">
+                    <option value="B2C">Hogar (Consumo Individual)</option>
+                    <option value="B2B">Comercial / Empresa</option>
+                </select>
+            </div>
+            <button type="submit" class="mono" style="background: #2e7d32; color: #ffffff; border: none; padding: 1rem; font-size: 0.85rem; font-weight: bold; letter-spacing: 0.5px; cursor: pointer; text-transform: uppercase; margin-top: 0.5rem;">
+                Crear Cuenta Nueva
+            </button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function cambiarPestaña(tipo) {
+        const loginForm = document.getElementById('form-login-container');
+        const registroForm = document.getElementById('form-registro-container');
+        const tabLogin = document.getElementById('tab-login');
+        const tabRegistro = document.getElementById('tab-registro');
+
+        if (tipo === 'login') {
+            loginForm.style.display = 'block';
+            registroForm.style.display = 'none';
+            tabLogin.style.cssText = "font-size: 14px; color: var(--ink); font-weight: bold; cursor: pointer; text-transform: uppercase; border-bottom: 2px solid var(--ink); padding-bottom: 0.5rem;";
+            tabRegistro.style.cssText = "font-size: 14px; color: #999999; font-weight: normal; cursor: pointer; text-transform: uppercase; padding-bottom: 0.5rem;";
+        } else {
+            loginForm.style.display = 'none';
+            registroForm.style.display = 'block';
+            tabLogin.style.cssText = "font-size: 14px; color: #999999; font-weight: normal; cursor: pointer; text-transform: uppercase; padding-bottom: 0.5rem;";
+            tabRegistro.style.cssText = "font-size: 14px; color: var(--ink); font-weight: bold; cursor: pointer; text-transform: uppercase; border-bottom: 2px solid var(--ink); padding-bottom: 0.5rem;";
+        }
+    }
+</script>
+{% endblock %}

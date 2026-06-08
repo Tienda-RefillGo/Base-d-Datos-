@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div style="max-width: 1100px; margin: 0 auto; padding: 6rem 2rem; background: var(--paper); min-height: 70vh; font-family: sans-serif;">
+    
+    <div style="border-bottom: 1px solid var(--cream); padding-bottom: 2rem; margin-bottom: 3.5rem; display: flex; justify-content: space-between; align-items: flex-end;">
+        <div>
+            <span class="mono" style="font-size: 10px; color: var(--warm-mid); text-transform: uppercase; letter-spacing: 1px; font-weight: bold;">Tu Selección Circular</span>
+            <h1 class="syne" style="font-size: 2.8rem; color: var(--ink); margin: 0.5rem 0 0 0; font-weight: 700; letter-spacing: -1px;">Tu Carrito <i>Circular</i></h1>
+        </div>
+        {% if carrito %}
+            <a href="{{ url_for('vaciar_carrito') }}" class="mono" style="color: #b71c1c; text-decoration: none; font-size: 12px; text-transform: uppercase; font-weight: bold;">🗑️ Vaciar Carrito</a>
+        {% endif %}
+    </div>
+
+    {% if carrito %}
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; align-items: start;">
+            
+            <div style="background: white; border: 1px solid var(--cream); padding: 1.5rem;">
+                {% for item in carrito %}
+                    <div style="display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 0; border-bottom: 1px solid var(--cream);">
+                        <div style="display: flex; align-items: center; gap: 1.5rem;">
+                            <div style="width: 70px; height: 70px; background: var(--paper); border: 1px solid var(--cream); padding: 0.5rem; display: flex; align-items: center; justify-content: center;">
+                                <img src="/static/img/{{ item.imagen }}" alt="{{ item.nombre }}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                            </div>
+                            <div>
+                                <h4 class="syne" style="margin: 0; font-size: 16px; color: var(--ink);">{{ item.nombre }}</h4>
+                                <span class="mono" style="font-size: 11px; color: var(--warm-mid);">${{ "%.2f"|format(item.precio) }} MXN / L</span>
+                            </div>
+                        </div>
+                        <div style="text-align: right;">
+                            <span class="mono" style="font-size: 13px; font-weight: bold; color: var(--ink);">${{ item.cantidad }} Litros</span>
+                            <p class="syne" style="margin: 0.2rem 0 0 0; font-size: 15px; font-weight: bold; color: #2e7d32;">${{ "%.2f"|format(item.precio * item.cantidad) }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div style="background: white; border: 1px solid var(--cream); padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
+                <h3 class="syne" style="margin: 0; font-size: 18px; font-weight: 700; border-bottom: 1px solid var(--cream); padding-bottom: 1rem;">Resumen de Orden</h3>
+                
+                <div style="display: flex; justify-content: space-between;" class="mono">
+                    <span style="font-size: 13px; color: #666666;">Subtotal Insumos:</span>
+                    <span style="font-size: 13px; font-weight: bold;">${{ "%.2f"|format(total) }}</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;" class="mono">
+                    <span style="font-size: 13px; color: #666666;">Logística de Envase:</span>
+                    <span style="font-size: 13px; color: #2e7d32; font-weight: bold;">$0.00 (Reusable)</span>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; border-top: 1px solid var(--cream); padding-top: 1rem; margin-top: 1rem;">
+                    <span class="syne" style="font-size: 16px; font-weight: bold;">Total a Pagar:</span>
+                    <strong class="syne" style="font-size: 20px; color: var(--ink);">${{ "%.2f"|format(total) }} MXN</strong>
+                </div>
+
+                <button class="mono" style="width: 100%; background: #2e7d32; color: white; border: none; padding: 1rem; font-weight: bold; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; margin-top: 1rem;">
+                    Proceder al Pago
+                </button>
+            </div>
+        </div>
+
+    {% else %}
+        <div style="background: white; border: 1px solid var(--cream); padding: 4rem 2rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
+            <p class="mono" style="font-size: 15px; color: #555555; margin: 0; font-style: italic;">
+                Tu carrito circular está vacío.
+            </p>
+            <a href="{{ url_for('index') }}" class="mono" style="background: var(--ink); color: white; text-decoration: none; padding: 0.8rem 2rem; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;">
+                Volver al Catálogo
+            </a>
+        </div>
+    {% endif %}
+
+</div>
+
+{% endblock %}

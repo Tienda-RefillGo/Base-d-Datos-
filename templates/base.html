@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refill Go — Sostenibilidad Circular</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Space+Mono:wght@400;700&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --paper: #f9f6f0;      /* Fondo suave minimalista */
+            --ink: #111111;        /* Negro tipográfico */
+            --cream: #e6dfd3;      /* Bordes y líneas divisoras */
+            --warm-mid: #7a7265;   /* Gris cálido para textos secundarios */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--paper);
+            color: var(--ink);
+            font-family: sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Clases tipográficas basadas en el manual de diseño */
+        .syne { font-family: 'Syne', sans-serif; }
+        .mono { font-family: 'Space Mono', monospace; }
+        .garamond { font-family: 'Cormorant Garamond', serif; }
+
+        nav a {
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: #2e7d32 !important; /* Verde ecológico al pasar el cursor */
+        }
+    </style>
+</head>
+<body>
+
+    <header style="width: 100%; background: white; border-bottom: 1px solid var(--cream); position: sticky; top: 0; z-index: 1000;">
+        <div style="max-width: 1300px; margin: 0 auto; padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center;">
+            
+            <nav style="display: flex; gap: 2rem; flex: 1;">
+                <a href="{{ url_for('index') }}" style="text-decoration: none; color: var(--ink); text-transform: uppercase;">Nuestros Productos</a>
+                <a href="{{ url_for('puntos') }}" style="text-decoration: none; color: var(--ink); text-transform: uppercase;">Puntos de Relleno</a>
+                <a href="{{ url_for('impacto') }}" style="text-decoration: none; color: var(--ink); text-transform: uppercase;">Impacto</a>
+            </nav>
+
+            <div style="text-align: center;">
+                <a href="{{ url_for('index') }}" class="syne" style="font-size: 1.6rem; font-weight: 800; color: var(--ink); text-decoration: none; letter-spacing: -1px;">
+                    REFILL<span style="color: #2e7d32;">GO</span>
+                </a>
+            </div>
+
+            <nav style="display: flex; gap: 2rem; flex: 1; justify-content: flex-end; align-items: center;">
+                <a href="{{ url_for('mostrar_carrito') }}" style="text-decoration: none; color: var(--ink); text-transform: uppercase; display: flex; align-items: center; gap: 0.4rem;">
+                    🛒 Carrito
+                </a>
+                <a href="{{ url_for('login') }}" style="text-decoration: none; color: var(--ink); text-transform: uppercase;">
+                    Mi Cuenta
+                </a>
+            </nav>
+
+        </div>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div style="max-width: 1100px; margin: 1.5rem auto 0 auto; padding: 0 2rem;">
+          {% for category, message in messages %}
+            <div style="padding: 1rem; background: #e8f5e9; border: 1px solid #c8e6c9; color: #2e7d32; border-radius: 6px;" class="mono">
+              💡 {{ message }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer style="background: white; border-top: 1px solid var(--cream); padding: 3rem 2rem; margin-top: 5rem;">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem;">
+            <div class="mono" style="font-size: 11px; color: var(--warm-mid);">
+                © 2026 Refill Go. Proyecto de Economía Circular. Aguascalientes, México.
+            </div>
+            <div class="syne" style="font-size: 14px; font-weight: 700;">
+                Hacia un Comercio Electrónico Sostenible 🌿
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

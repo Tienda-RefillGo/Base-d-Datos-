@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div style="max-width: 1200px; margin: 0 auto; padding: 6rem 2rem; background: var(--paper); min-height: 70vh; font-family: sans-serif;">
+    
+    <!-- ENCABEZADO SUPERIOR AÑADIDO -->
+    <div style="text-align: center; margin-bottom: 5rem;">
+        <h1 class="syne" style="font-size: 3.5rem; color: #2e7d32; margin: 0; font-weight: 700; letter-spacing: -1px;">
+            El Impacto de RefillGo
+        </h1>
+    </div>
+
+    <!-- SECCIÓN INFORMATIVA PRINCIPAL: ECONOMÍA CIRCULAR -->
+    <div style="display: flex; gap: 4rem; align-items: center; max-width: 1000px; margin: 0 auto; flex-wrap: wrap;">
+        
+        <!-- Columna de Imagen -->
+        <div style="flex: 1; min-width: 300px; height: 400px; border-radius: 12px; overflow: hidden; border: 1px solid var(--cream);">
+            <img src="/static/img/contaminacion.jpg" alt="Impacto Ecológico Sostenible" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+
+        <!-- Columna de Texto Explicativo -->
+        <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 1.5rem;">
+            <span class="mono" style="font-size: 11px; color: #2e7d32; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Economía Circular Activa</span>
+            <h3 class="syne" style="font-size: 2.2rem; color: var(--ink); margin: 0; font-weight: 700; line-height: 1.2;">¿Cómo calculamos nuestra huella positiva?</h3>
+            <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: #555555; margin: 0; line-height: 1.6; font-style: italic;">
+                Cada litro de detergente o suavizante recargado en nuestras estaciones automatizadas evita la producción, transporte y desecho de un envase plástico convencional de un solo uso.
+            </p>
+            <p class="mono" style="font-size: 13px; color: #666666; margin: 0; line-height: 1.6;">
+                A través de la trazabilidad de los Smart Dispensers locales, medimos de forma directa el volumen químico distribuido y estimamos la reducción equivalente en emisiones de carbono asociadas a las cadenas tradicionales de suministro logístico.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

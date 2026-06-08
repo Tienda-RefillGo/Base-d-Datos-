@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container" style="padding: 3rem; max-width: 1200px; margin: 0 auto; font-family: sans-serif;">
+    
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; border-bottom: 2px solid #2e7d32; padding-bottom: 1rem;">
+        <h1 style="color: #2e7d32; margin: 0;">🌱 Panel de Administración Maestro</h1>
+        <span style="background-color: #e8f5e9; color: #2e7d32; padding: 0.5rem 1rem; border-radius: 20px; font-weight: bold; font-size: 0.9rem;">
+            Refill Go Local v2.0
+        </span>
+    </div>
+
+    <div style="background-color: #f6fbf7; border: 1px solid #c8e6c9; padding: 2rem; border-radius: 12px; margin-bottom: 3rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+        <h2 style="color: #1b5e20; margin-top: 0; margin-bottom: 1.5rem;">📦 Registrar Nuevo Producto en Almacén</h2>
+        <form action="/admin/nuevo_producto" method="POST" enctype="multipart/form-data" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
+            <div>
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: #333;">Nombre del Producto:</label>
+                <input type="text" name="nombre" placeholder="Ej. Detergente Bio" required style="width: 100%; padding: 0.7rem; border: 1px solid #ccc; border-radius: 6px;">
+            </div>
+            <div>
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: #333;">Categoría:</label>
+                <select name="categoria" required style="width: 100%; padding: 0.7rem; border: 1px solid #ccc; border-radius: 6px; background-color: white;">
+                    <option value="Limpieza Hogar">Limpieza del Hogar</option>
+                    <option value="Aseo Personal">Aseo Personal</option>
+                </select>
+            </div>
+            <div>
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: #333;">Precio por Litro ($):</label>
+                <input type="number" step="0.1" name="precio" placeholder="Ej. 34.50" required style="width: 100%; padding: 0.7rem; border: 1px solid #ccc; border-radius: 6px;">
+            </div>
+            <div>
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: #333;">Stock Inicial (Litros):</label>
+                <input type="number" name="stock" placeholder="Ej. 100" required style="width: 100%; padding: 0.7rem; border: 1px solid #ccc; border-radius: 6px;">
+            </div>
+            <div style="grid-column: 1 / -1;">
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: #333;">Descripción:</label>
+                <textarea name="descripcion" placeholder="Detalles de la fórmula ecológica..." style="width: 100%; padding: 0.7rem; border: 1px solid #ccc; border-radius: 6px; height: 60px; resize: none;"></textarea>
+            </div>
+            <div style="grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; background-color: white; padding: 1rem; border-radius: 8px; border: 1px dashed #a5d6a7;">
+                <div>
+                    <label style="font-weight: bold; color: #333; display: block; margin-bottom: 0.2rem;">Imagen del Envase Commercial:</label>
+                    <input type="file" name="imagen_envase" accept="image/*">
+                </div>
+                <button type="submit" style="background-color: #2e7d32; color: white; border: none; padding: 0.8rem 2rem; font-weight: bold; border-radius: 6px; cursor: pointer;">
+                    ➕ Guardar en Catálogo
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div style="margin-bottom: 3rem;">
+        <h2 style="color: #333; margin-bottom: 1rem;">👥 Clientes Registrados</h2>
+        <div style="overflow-x: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+            <table style="width: 100%; border-collapse: collapse; text-align: left; background-color: white;">
+                <thead>
+                    <tr style="background-color: #2e7d32; color: white;">
+                        <th style="padding: 1rem;">ID</th>
+                        <th style="padding: 1rem;">Nombre Completo</th>
+                        <th style="padding: 1rem;">Correo Electrónico</th>
+                        <th style="padding: 1rem; text-align: center;">Segmento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for u in usuarios %}
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 1rem; font-weight: bold; color: #666;">#{{ u['id'] }}</td>
+                        <td style="padding: 1rem;">{{ u['nombre'] }}</td>
+                        <td style="padding: 1rem; color: #0288d1;">{{ u['correo'] }}</td>
+                        <td style="padding: 1rem; text-align: center;">
+                            {% if u['tipo'] == 'B2B' %}
+                                <span style="padding: 0.3rem 0.8rem; border-radius: 12px; font-size: 0.85rem; font-weight: bold; background-color: #e3f2fd; color: #0d47a1;">
+                            {% else %}
+                                <span style="padding: 0.3rem 0.8rem; border-radius: 12px; font-size: 0.85rem; font-weight: bold; background-color: #fff3e0; color: #e65100;">
+                            {% endif %}
+                                    {{ u['tipo'] }}
+                                </span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div>
+        <h2 style="color: #333; margin-bottom: 1rem;">📋 Registro Histórico de Ventas y Recargas</h2>
+        <div style="overflow-x: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+            <table style="width: 100%; border-collapse: collapse; text-align: left; background-color: white;">
+                <thead>
+                    <tr style="background-color: #37474f; color: white;">
+                        <th style="padding: 1rem;">Ticket ID</th>
+                        <th style="padding: 1rem;">Cliente Solicitante</th>
+                        <th style="padding: 1rem;">Fecha y Hora</th>
+                        <th style="padding: 1rem;">Detalles Logísticos de Suministro</th>
+                        <th style="padding: 1rem; text-align: right;">Monto Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in pedidos %}
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 1rem; font-weight: bold; color: #666;">#{{ p['id'] }}</td>
+                        <td style="padding: 1rem; font-weight: 500;">{{ p['cliente_nombre'] }}</td>
+                        <td style="padding: 1rem; color: #555;">{{ p['fecha'] }}</td>
+                        <td style="padding: 1rem; color: #444; font-style: italic;">{{ p['detalles'] }}</td>
+                        <td style="padding: 1rem; text-align: right; font-weight: bold; color: #2e7d32;">
+                            ${{ "%.2f"|format(p['total']) }} MXN
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

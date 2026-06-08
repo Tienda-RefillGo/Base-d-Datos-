@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="max-width: 1200px; margin: 0 auto; padding: 6rem 2rem; background: var(--paper);">
+    
+    <!-- ENCABEZADO EDITORIAL -->
+    <div style="text-align: center; margin-bottom: 5rem;">
+        <span class="mono" style="color: var(--accent); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em;">Planes Circulares de Relleno</span>
+        <h1 class="syne" style="font-size: 48px; color: var(--ink); margin: 0.5rem 0 1rem 0; font-weight: 800; letter-spacing: -1px;">
+            Elige tu Modelo de <em style="color: var(--accent); font-family: 'Cormorant Garamond', serif; font-weight: 400;">Suscripción</em>
+        </h1>
+        <p style="font-family: 'Cormorant Garamond', serif; color: var(--warm-mid); font-size: 22px; max-width: 600px; margin: 0 auto; line-height: 1.4;">
+            Automatiza el suministro de tus insumos de limpieza en Aguascalientes sin generar un solo residuo plástico.
+        </p>
+    </div>
+
+    <!-- CUADRÍCULA DE LOS 3 PLANES -->
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-bottom: 6rem; align-items: stretch;">
+        
+        <!-- PLAN BÁSICO -->
+        <div style="background: white; border: 1px solid var(--cream); padding: 3rem 2rem; display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s;" onmouseover="this.style.borderColor='var(--ink)'" onmouseout="this.style.borderColor='var(--cream)'">
+            <div style="text-align: left;">
+                <span class="mono" style="font-size: 10px; color: var(--warm-mid); text-transform: uppercase;">Para Espacios Chicos</span>
+                <h3 class="syne" style="font-size: 26px; font-weight: 700; margin: 0.3rem 0 1rem 0;">Plan Básico</h3>
+                <div style="margin-bottom: 2rem;">
+                    <span class="syne" style="font-size: 42px; font-weight: 800;">$149</span><span class="mono" style="font-size: 12px; color: var(--warm-mid);"> / mes</span>
+                </div>
+                <p style="font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--warm-mid); line-height: 1.4; margin-bottom: 2rem;">
+                    Ideal para adultos independientes o departamentos pequeños que buscan cubrir sus necesidades esenciales de limpieza general.
+                </p>
+                <div style="border-top: 1px solid var(--paper); padding-top: 1.5rem;">
+                    <ul class="mono" style="font-size: 11px; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.8rem; color: var(--ink);">
+                        <li>📦 Suministro de 2L Mensuales</li>
+                        <li>🌿 Fórmulas Biodegradables</li>
+                        <li>🚚 Envío Estándar en Ags</li>
+                        <li style="opacity: 0.4; text-decoration: line-through;">🔄 Envases de Aluminio Premium</li>
+                    </ul>
+                </div>
+            </div>
+            <button style="width: 100%; background: transparent; border: 1px solid var(--ink); color: var(--ink); padding: 1rem; font-family: 'DM Mono'; font-size: 11px; text-transform: uppercase; margin-top: 2.5rem; cursor: pointer; font-weight: 600;">Seleccionar Plan</button>
+        </div>
+
+        <!-- PLAN MEDIO -->
+        <div style="background: white; border: 2px solid var(--accent); padding: 3rem 2rem; display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+            <span class="mono" style="position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--accent); color: white; font-size: 9px; padding: 4px 12px; text-transform: uppercase; font-weight: 600; letter-spacing: 0.1em;">Más Popular</span>
+            <div style="text-align: left;">
+                <span class="mono" style="font-size: 10px; color: var(--accent); text-transform: uppercase; font-weight: 600;">Equilibrio Perfecto</span>
+                <h3 class="syne" style="font-size: 26px; font-weight: 700; margin: 0.3rem 0 1rem 0;">Plan Medio</h3>
+                <div style="margin-bottom: 2rem;">
+                    <span class="syne" style="font-size: 42px; font-weight: 800;">$289</span><span class="mono" style="font-size: 12px; color: var(--warm-mid);"> / mes</span>
+                </div>
+                <p style="font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--warm-mid); line-height: 1.4; margin-bottom: 2rem;">
+                    Diseñado para familias medianas. Cubre de forma integral el cuidado de la ropa, trastes y desinfección de pisos del hogar.
+                </p>
+                <div style="border-top: 1px solid var(--paper); padding-top: 1.5rem;">
+                    <ul class="mono" style="font-size: 11px; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.8rem; color: var(--ink);">
+                        <li>📦 Suministro de 5L Mensuales</li>
+                        <li>🌿 Fórmulas Biodegradables</li>
+                        <li>⚡ Envío Preferente Ecofriendly</li>
+                        <li>🔄 Cambio de Envases en Puerta</li>
+                    </ul>
+                </div>
+            </div>
+            <button style="width: 100%; background: var(--accent); border: none; color: white; padding: 1rem; font-family: 'DM Mono'; font-size: 11px; text-transform: uppercase; margin-top: 2.5rem; cursor: pointer; font-weight: 600;">Seleccionar Plan</button>
+        </div>
+
+        <!-- PLAN PREMIUM -->
+        <div style="background: white; border: 1px solid var(--cream); padding: 3rem 2rem; display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s;" onmouseover="this.style.borderColor='var(--ink)'" onmouseout="this.style.borderColor='var(--cream)'">
+            <div style="text-align: left;">
+                <span class="mono" style="font-size: 10px; color: var(--warm-mid); text-transform: uppercase;">Abastecimiento Total</span>
+                <h3 class="syne" style="font-size: 26px; font-weight: 700; margin: 0.3rem 0 1rem 0;">Plan Premium</h3>
+                <div style="margin-bottom: 2rem;">
+                    <span class="syne" style="font-size: 42px; font-weight: 800;">$459</span><span class="mono" style="font-size: 12px; color: var(--warm-mid);"> / mes</span>
+                </div>
+                <p style="font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--warm-mid); line-height: 1.4; margin-bottom: 2rem;">
+                    La solución definitiva para residencias grandes o comercios locales. Acceso irrestricto a todo nuestro catálogo de insumos.
+                </p>
+                <div style="border-top: 1px solid var(--paper); padding-top: 1.5rem;">
+                    <ul class="mono" style="font-size: 11px; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.8rem; color: var(--ink);">
+                        <li>📦 Suministro Ilimitado (Hasta 10L)</li>
+                        <li>🌿 Fórmulas Biodegradables de Élite</li>
+                        <li>🚀 Envío Express Inmediato en Ags</li>
+                        <li>✨ Envases de Aluminio Premium Incluidos</li>
+                    </ul>
+                </div>
+            </div>
+            <button style="width: 100%; background: var(--ink); border: none; color: white; padding: 1rem; font-family: 'DM Mono'; font-size: 11px; text-transform: uppercase; margin-top: 2.5rem; cursor: pointer; font-weight: 600;">Seleccionar Plan</button>
+        </div>
+
+    </div>
+
+    <!-- SECCIÓN INFRAESTRUCTURA: INFORMACIÓN ADICIONAL Y BENEFICIOS -->
+    <div style="background: white; border: 1px solid var(--cream); padding: 4rem; text-align: left;">
+        <div style="margin-bottom: 3rem; text-align: center;">
+            <span class="mono" style="color: var(--warm-mid); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em;">Transparencia de Operaciones</span>
+            <h2 class="syne" style="font-size: 32px; font-weight: 800; margin-top: 0.3rem;">Beneficios e Información Adicional</h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;" class="mono">
+            <div>
+                <h4 class="syne" style="font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 1rem;">¿Cómo funciona la logística circular?</h4>
+                <p style="font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--warm-mid); line-height: 1.5; margin-bottom: 2rem;">
+                    En tu primera entrega te otorgamos contenedores sanitizados oficiales. En cada ciclo mensual posterior, nuestro camión de reparto acude a tu domicilio, recolecta los envases vacíos y te deja nuevos botes llenos. Tú no lavas, tú no desechas.
+                </p>
+                
+                <h4 class="syne" style="font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 1rem;">Políticas de Cancelación</h4>
+                <p style="font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--warm-mid); line-height: 1.5;">
+                    Sin plazos forzosos. Puedes pausar, modificar o dar de baja tu suscripción mensual en cualquier momento directo desde tu Panel de Cliente sin penalizaciones.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="syne" style="font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 1rem;">Sobre la Calidad de los Insumos</h4>
+                <p style="font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--warm-mid); line-height: 1.5; margin-bottom: 2rem;">
+                    Todos nuestros suavizantes, detergentes y lavatrastes son libres de fosfatos y crueldad animal. Poseen una alta concentración activa que garantiza el mismo rendimiento químico que las marcas comerciales, cuidando tu salud y el agua.
+                </p>
+
+                <h4 class="syne" style="font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 1rem;">Cobertura en Aguascalientes</h4>
+                <p style="font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--warm-mid); line-height: 1.5;">
+                    Nuestras camionetas cubren diariamente las zonas Centro, Norte, Poniente y Sur del municipio capital, integrando rutas programadas para disminuir las emisiones globales por distribución lograda.
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
